@@ -1,0 +1,21 @@
+{
+  "name": "hyper-interact",
+  "version": "0.0.1",
+  "description": "Tools to use the REST API for hyperledger",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "node-json-rpc": "0.0.1",
+    "node-uuid": "^1.4.7"
+  },
+  "devDependencies": {
+    "expect": "^1.16.0",
+    "mocha": "^2.4.5",
+    "rewire": "^2.5.1",
+    "sinon": "^1.17.3"
+  }
+}
