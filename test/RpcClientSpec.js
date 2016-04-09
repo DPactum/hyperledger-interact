@@ -1,7 +1,7 @@
 var expect = require("expect");
 var sinon = require("sinon");
 var rewire = require("rewire");
-var Client = rewire("./index");
+var Client = rewire("../RpcClient");
 
 var rpc = Client.__get__("rpc");
 
@@ -76,7 +76,7 @@ describe("rpc-client Client", function() {
                 expect(stub.getCall(0).args[0].jsonrpc).toBe("2.0");
                 expect(stub.getCall(0).args[0].method).toBe("mymethod");
                 expect(stub.getCall(0).args[0].params).toBe(undefined);
-                expect(stub.getCall(0).args[0].id).toExist();
+                expect(stub.getCall(0).args[0].id).toBe(0);
                 done();
             });
         });

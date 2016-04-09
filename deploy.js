@@ -1,6 +1,6 @@
 var YAML = require("yamljs");
 var pathUtil = require("path");
-var Client = require("../rpc-client");
+var Client = require("./RpcClient");
 var rpc;
 
 var options = {};
@@ -11,7 +11,6 @@ function config(yamlPath, next) {
     
     options.chaincode = options.chaincode || {};
     options.rpcsettings = options.rpcsettings || {};
-console.log(JSON.stringify(options, null, 4));
     rpc = new Client(options.rpcsettings);
 }
 
@@ -56,6 +55,7 @@ module.exports = {
     deploy: deploy
 };
 
+/*
 //    Example deploy call:
  deploy({
  //path: "$GOPATH/src/github.com/hyperledger/fabric/examples/chaincode/go/chaincode_example02",
@@ -78,4 +78,5 @@ module.exports = {
          console.log(err || response);
      });
  });
+*/
 

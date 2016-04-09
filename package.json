@@ -10,7 +10,6 @@
   "license": "ISC",
   "dependencies": {
     "node-json-rpc": "0.0.1",
-    "node-uuid": "^1.4.7",
     "yamljs": "^0.2.7"
   },
   "devDependencies": {

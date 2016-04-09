@@ -1,5 +1,4 @@
 var rpc = require("node-json-rpc");
-var uuid = require("node-uuid");
 
 var Client = function(options) {
     var self = this;
