@@ -1,6 +1,7 @@
 var Client = require("./RpcClient");
 
 var RpcObject = function(rpcobject) {
+    rpcobject = rpcobject || {};
     var self = this;
     self.address = rpcobject.address || undefined;
     self.rpcArgs = rpcobject.rpcArgs;

@@ -39,7 +39,7 @@ function deploy(args, next) {
     }
 
     if (args.constructorArgs) {
-        params.ctorMsg = args.constructorArgs;
+        params.ctorMsg.args = args.constructorArgs;
         params.ctorMsg.function = "init";
     }
 
