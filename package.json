@@ -1,10 +1,14 @@
 {
-  "name": "hyper-interact",
+  "name": "hyperledger-interact",
   "version": "0.0.1",
   "description": "Tools to use the REST API for hyperledger",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DPactum/hyperledger-interact"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha test"
   },
   "author": "",
   "license": "ISC",
