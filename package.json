@@ -1,6 +1,6 @@
 {
   "name": "hyperledger-interact",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Tools to use the REST API for hyperledger",
   "main": "index.js",
   "repository": {
