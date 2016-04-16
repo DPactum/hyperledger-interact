@@ -1,9 +1,9 @@
-var deploy = require("./deploy");
+var DeploySvc = require("./DeploySvc");
 var RpcClient = require("./RpcClient");
 var HyperObject = require("./HyperObject");
 
 module.exports = {
-    Deploy: deploy,
+    DeploySvc: DeploySvc,
     RpcClient: RpcClient,
     HyperObject: HyperObject
 };

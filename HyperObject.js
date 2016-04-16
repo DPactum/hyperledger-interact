@@ -6,14 +6,14 @@ var RpcObject = function(rpcobject) {
     self.address = rpcobject.address || undefined;
     self.rpcArgs = rpcobject.rpcArgs;
 
-    if (self.rpcArgs) {
-        self.init(self.rpcArgs);
-    }
-
     self.init = function (rpcArgs) {
         self.rpc = new Client(rpcArgs);
         self.rpcArgs = rpcArgs;
     };
+
+    if (self.rpcArgs) {
+        self.init(self.rpcArgs);
+    }
 
     self.invoke = function(args, next) {
         call("invoke", args, next);
@@ -33,6 +33,10 @@ var RpcObject = function(rpcobject) {
     function call(method, args, next) {
         if (!self.rpc) {
             return next({message: "You must call 'init' with the JSONRPC endpoints"});
+        }
+
+        if (!args) {
+            return next({message: "args are required."})
         }
 
         if (!args.function) {
@@ -57,17 +61,7 @@ var RpcObject = function(rpcobject) {
             params.secureContext = args.secureContext;
         }
 
-        self.rpc.call(method, params, function (err, response) {
-            if (err) {
-                return next(err);
-            }
-
-            if (response.status !== "OK") {
-                return next(response.message);
-            }
-
-            next(null, response.message);
-        });
+        self.rpc.call(method, params, next);
     }
 
     return self;

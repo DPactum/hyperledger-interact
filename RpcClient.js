@@ -20,14 +20,15 @@ var Client = function(options) {
         if (!method) {
             return next({message: "method is required."})
         }
-        
+
         var rpcRequest = {
             "jsonrpc": self.options.jsonrpc,
             "method": method,
             "params": _params,
             "id": requestId++
         };
-
+        console.log("SENDING: ");
+        console.log(JSON.stringify(rpcRequest, null, 4));
         self.client.call(rpcRequest, next);
     };
 
