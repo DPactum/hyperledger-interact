@@ -2,7 +2,7 @@ var YAML = require("yamljs");
 var pathUtil = require("path");
 var Client = require("./RpcClient");
 var rpc;
-
+var fs = require("fs");
 var options = {};
 
 function config(yamlPath, next) {
@@ -51,10 +51,36 @@ function deploy(args, next) {
     rpc.call("deploy", params, next);
 }
 
+function updateNameservice(params, next) {
+    if (!params) {
+        return next({message: "args is required."})
+    }
+
+    if (!params.serviceName) {
+        return next({message: "args.serviceName is required."})
+    }
+
+    if (!params.serviceAddress) {
+        return next({message: "args.serviceAddress is required."})
+    }
+    var filePath = pathUtil.join(process.env.GOPATH, 'src/github.com/dpactum/NameService/nameservice-address.txt');
+    fs.readFile(filePath, {encoding: 'utf-8'}, function (err, response) {
+        if (err) {
+            return next(err);
+        }
+
+        var args = { type: 1, chaincodeID: { name: response }, ctorMsg: { function: "update", args: [params.serviceName, params.serviceAddress]}};
+        console.log("the address of the IOC is: ", response);
+        rpc.call("invoke", args, next);
+    });
+}
+
 module.exports = {
     config: config,
-    deploy: deploy
+    deploy: deploy,
+    updateNameservice: updateNameservice
 };
+
 
 /*
  //    Example deploy call:
